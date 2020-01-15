@@ -3,16 +3,17 @@ import classes from "./SideDrawer.module.css"
 import Logo from "../../Logo/Logo"
 import NavigationItems from "../NavigationItems/NavigationItems"
 import Backdrop from "../../UI/Backdrop/Backdrop"
+import Auxiliary from "../../Auxiliary/Auxiliary"
 
-export default function SideDrawer(props) {
-    let attachedClasses = [classes.SideDrawer, classes.Close]
+const sideDrawer = ( props ) => {
+    let attachedClasses = [classes.SideDrawer, classes.Close];
     if (props.open) {
-        attachedClasses = [classes.SideDrawer, classes.Open]
+        attachedClasses = [classes.SideDrawer, classes.Open];
     }
     return (
-        <React.Fragment>
-            <Backdrop show={props.open} clicked={props.closed} />
-            <div className={attachedClasses.join(" ")}>
+        <Auxiliary>
+            <Backdrop show={props.open} clicked={props.closed}/>
+            <div className={attachedClasses.join(' ')}>
                 <div className={classes.Logo}>
                     <Logo />
                 </div>
@@ -20,6 +21,8 @@ export default function SideDrawer(props) {
                     <NavigationItems />
                 </nav>
             </div>
-        </React.Fragment>
-    )
-}
+        </Auxiliary>
+    );
+};
+
+export default sideDrawer;

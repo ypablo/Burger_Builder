@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-//import Aux from "../../hoc/Auxi"
+
+import Auxiliary from "../Auxiliary/Auxiliary"
 import classes from "./Layout.module.css"
 import Toolbar from "../Navigation/Toolbar/Toolbar"
 import SideDrawer from "../Navigation/SideDrawer/SideDrawer"
@@ -10,26 +11,26 @@ class Layout extends Component {
     }
 
     sideDrawerClosedHandler = () => {
-        this.setState({ showSideDrawer: false })
+        this.setState( { showSideDrawer: false } );
     }
 
     sideDrawerToggleHandler = () => {
-        this.setState((prevState) => {
-            return { showSideDrawer: !prevState.showSideDrawer }
-        })
+        this.setState( ( prevState ) => {
+            return { showSideDrawer: !prevState.showSideDrawer };
+        } );
     }
 
-    render() {
+    render () {
         return (
-            <React.Fragment >
+            <Auxiliary>
                 <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
                 <SideDrawer
-                    closed={this.sideDrawerClosedHandler}
-                    open={this.state.showSideDrawer} />
+                    open={this.state.showSideDrawer}
+                    closed={this.sideDrawerClosedHandler} />
                 <main className={classes.Content}>
                     {this.props.children}
                 </main>
-            </React.Fragment >
+            </Auxiliary>
         )
     }
 }
